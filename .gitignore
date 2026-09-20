@@ -1,5 +1,7 @@
 venv/
 __pycache__/
 *.pyc
-data/*.csv
+data/*
+!data/.gitkeep
 .env
+.ipynb_checkpoints/

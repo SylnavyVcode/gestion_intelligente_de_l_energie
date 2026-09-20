@@ -35,7 +35,29 @@ energie-dashboard/
 Avec le fichier .gitignore pour ne jamais versionner l'environnement virtuel ni les données dolumineuses.
 
 faire le premier commit :
+`git add . 
+git commit -m "Initialisation structure du projet"`
+
+## Télécharger et explorer le dataset UCI
+### Installer les librairies nécessaires pour explorer
+Ajoute dans requirements.txt :
+
+pandas
+matplotlib
+jupyter
+
+puis exécuter la commande : 
+`pip install -r requirements.txt`
+
+### télécharger le dataset
 `
-git add .
-git commit -m "Initialisation structure du projet"
+cd data
+wget https://archive.ics.uci.edu/static/public/235/individual+household+electric+power+consumption.zip
+unzip individual+household+electric+power+consumption.zip
+cd ..
 `
+
+### Lancer jupyter pour explorer
+jupyter notebook
+
+une fois ouvert on crée un fichier 01_exploration.ipynb,
