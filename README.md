@@ -61,3 +61,11 @@ cd ..
 jupyter notebook
 
 une fois ouvert on crée un fichier 01_exploration.ipynb,
+
+4. Lancer le serveur
+
+Depuis la racine du projet, dans src/api/ :
+
+bash
+cd src/api
+uvicorn main:app --reload

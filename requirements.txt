@@ -5,3 +5,22 @@ jupyter
 # Gestion de l'environnement
 psycopg2-binary
 python-dotenv
+
+# Back-end 
+fastapi
+uvicorn
+
+"""
+FastAPI décrit comment répondre aux requêtes, mais ne sait pas lui-même 
+écouter le réseau — uvicorn est le serveur qui fait tourner concrètement 
+l'application et reçoit les requêtes HTTP.
+"""
+
+"""
+Adapter la connexion pour retourner du JSON exploitable
+
+Par défaut, psycopg2 retourne chaque ligne comme un simple tuple 
+((1, "Petit bureau", 2.0)) — pas pratique pour construire une 
+réponse JSON avec des noms de champs. On utilise RealDictCursor, 
+qui retourne des dictionnaires ({"id": 1, "nom": "Petit bureau", ...}).
+"""
