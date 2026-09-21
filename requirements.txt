@@ -1,3 +1,7 @@
 pandas
 matplotlib
 jupyter
+
+# Gestion de l'environnement
+psycopg2-binary
+python-dotenv
