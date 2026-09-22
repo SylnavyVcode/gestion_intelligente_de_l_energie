@@ -44,3 +44,40 @@ def lister_mesures(
     cur.close()
     conn.close()
     return resultats
+
+@app.get("/anomalies")
+def lister_anomalies(site_id: Optional[int] = None):
+    conn, cur = get_dict_connection()
+
+    requete = """
+        SELECT a.id, m.site_id, m.timestamp, m.valeur_kwh, a.methode, a.score, a.detectee_le
+        FROM anomalies a
+        JOIN mesures m ON m.id = a.mesure_id
+    """
+    parametres = []
+
+    if site_id:
+        requete += " WHERE m.site_id = %s"
+        parametres.append(site_id)
+
+    requete += " ORDER BY m.timestamp"
+
+    cur.execute(requete, parametres)
+    resultats = cur.fetchall()
+    cur.close()
+    conn.close()
+    return resultats
+
+
+@app.get("/previsions")
+def lister_previsions(site_id: int):
+    conn, cur = get_dict_connection()
+    cur.execute(
+        "SELECT id, site_id, horizon_timestamp, valeur_prevue, date_calcul "
+        "FROM previsions WHERE site_id = %s ORDER BY horizon_timestamp",
+        [site_id]
+    )
+    resultats = cur.fetchall()
+    cur.close()
+    conn.close()
+    return resultats
