@@ -175,3 +175,12 @@ streamlit run src/dashboard/app.py
 - Endpoint `POST /detecter-anomalies` pour déclencher la détection à la demande plutôt qu'en script batch.
 - Isolation Forest en complément de la méthode par résidu, pour comparer une approche non supervisée sur les mêmes données.
 - Déploiement démo public (API sur Render/Railway, dashboard sur Streamlit Cloud).
+
+## Démo en ligne
+
+- **Dashboard** : https://gestion-intelligente-energie.streamlit.app/
+- **API** : https://gestion-intelligente-de-l-energie-api.onrender.com/docs
+
+> Note : l'API est hébergée sur le plan gratuit de Render, qui se met en veille après 
+> 15 minutes d'inactivité — le premier chargement du dashboard après une pause peut 
+> prendre 30 à 50 secondes.
