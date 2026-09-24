@@ -1,10 +1,23 @@
 from fastapi import FastAPI
-from db import get_dict_connection
 
 from typing import Optional
 from datetime import datetime
 
+try:
+    from db import get_dict_connection
+except ImportError:
+    from src.api.db import get_dict_connection
+
 app = FastAPI(title="API Gestion Intelligente de l'Énergie")
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # projet de démonstration ; en production, lister le(s) domaine(s) exact(s)
+    allow_methods=["GET"],
+    allow_headers=["*"],
+)
 
 @app.get("/sites")
 def lister_sites():
